@@ -7,9 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Building } from 'lucide-react';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Eye, EyeOff, Mail, Lock, ArrowRight, AlertCircle } from 'lucide-react';
 
-export default function FounderLogin() {
+export default function InvestorLogin() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -53,8 +54,8 @@ export default function FounderLogin() {
     // Simulate login
     setTimeout(() => {
       setIsLoading(false);
-      // Redirect to founder dashboard
-      window.location.href = '/founder';
+      // Redirect to investor dashboard
+      window.location.href = '/investor';
     }, 2000);
   };
 
@@ -71,8 +72,8 @@ export default function FounderLogin() {
               <span className="text-white text-xl font-bold">Movo</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link href="/auth/investor/login" className="text-white/80 hover:text-white transition-colors">
-                Investor Login
+              <Link href="/auth/founder/login" className="text-white/80 hover:text-white transition-colors">
+                Founder Login
               </Link>
             </div>
           </div>
@@ -82,18 +83,15 @@ export default function FounderLogin() {
       <div className="flex items-center justify-center min-h-[calc(100vh-64px)] p-6">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Building className="h-8 w-8 text-white" />
-            </div>
-            <h1 className="text-3xl font-bold text-white mb-2">Founder Portal</h1>
-            <p className="text-white/70">Access your startup dashboard</p>
+            <h1 className="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+            <p className="text-white/70">Sign in to your investor account</p>
           </div>
 
           <Card className="bg-white/10 backdrop-blur-md border-white/20">
             <CardHeader>
-              <CardTitle className="text-white text-center">Founder Login</CardTitle>
+              <CardTitle className="text-white text-center">Investor Login</CardTitle>
               <CardDescription className="text-white/70 text-center">
-                Manage your startup listing and connect with investors
+                Enter your credentials to access your portfolio
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -156,7 +154,7 @@ export default function FounderLogin() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700"
                 >
                   {isLoading ? 'Signing in...' : 'Sign In'}
                   {!isLoading && <ArrowRight className="ml-2 h-4 w-4" />}
@@ -165,8 +163,8 @@ export default function FounderLogin() {
                 <div className="text-center">
                   <p className="text-white/70">
                     Don't have an account?{' '}
-                    <Link href="/auth/founder/register" className="text-blue-400 hover:text-blue-300">
-                      Register your startup
+                    <Link href="/auth/investor/register" className="text-blue-400 hover:text-blue-300">
+                      Sign up here
                     </Link>
                   </p>
                 </div>
@@ -176,9 +174,9 @@ export default function FounderLogin() {
 
           <div className="mt-6 text-center">
             <p className="text-white/60 text-sm">
-              Are you an investor?{' '}
-              <Link href="/auth/investor/login" className="text-blue-400 hover:text-blue-300">
-                Login as Investor
+              Are you a startup founder?{' '}
+              <Link href="/auth/founder/login" className="text-blue-400 hover:text-blue-300">
+                Login as Founder
               </Link>
             </p>
           </div>
